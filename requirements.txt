@@ -1,0 +1,6 @@
+flask
+Flask-Admin
+werkzeug
+flask_sqlalchemy
+flask_login
+flask_babel

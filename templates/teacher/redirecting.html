@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Lesson</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* Set background color to white */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 50px auto;
+            text-align: center;
+        }
+        h3 {
+            color: #235391; /* Color for heading */
+        }
+        select, button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        select {
+            background-color: #f9f9f9; /* Light gray background for select */
+        }
+        button {
+            background-color: #235391; /* Blue background for button */
+            color: #fff; /* White text color for button */
+        }
+        button:hover {
+            background-color: #1a3d6e; /* Darker blue on hover */
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ccc; /* Light gray border for hr */
+            margin: 20px auto;
+            width: 80%;
+        }
+        footer {
+            background-color: #235391; /* Blue background for footer */
+            color: #fff; /* White text color for footer */
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Choose Lesson Type:</h3>
+    <form action="{{ url_for('upload') }}" method="post">
+<input type="text"placeholder="ادخل اسم الدرس" name="lesson_name">
+      <div class="container">
+
+        <h3>اختر الكورس:</h3>
+        <!-- Dropdown menu for selecting lessons -->
+        <select id="lesson-select" name="lesson-select">
+          <option value="">Select a lesson</option>
+          <!-- Populate options dynamically with teacher's lessons -->
+          {% for lesson in teacher.courses %}
+          <option value="{{ lesson.id }}">{{ lesson.name }}</option>
+          {% endfor %}
+        </select>
+
+        <select id="target" name="type">
+          <option value="">اختر</option>
+          <option value="v">فيديو</option>
+          <option value="q">تطبيق</option>
+          <option value="f">ملف</option>
+        </select>
+      </div>
+
+      <button type="submit">اضافة</button>
+    </form>
+    <hr>
+  </div>
+
+  <footer>
+    &copy; 2024 Your School Name
+  </footer>
+</body>
+</html>

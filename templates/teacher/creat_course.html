@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إنشاء كورس جديد</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      text-align: right;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    header, footer {
+      background-color: #235391;
+      color: #ffffff;
+      padding: 10px 20px;
+    }
+
+    h1 {
+      color: #ffffff;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #235391;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #235391;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      padding: 15px 20px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#">الصفحة الرئيسية</a>
+    <a href="#">تسجيل الخروج</a>
+  </nav>
+  <h1>إنشاء كورس جديد</h1>
+</header>
+
+<div class="container">
+<form action="{{ url_for('creat_course') }}" method="post" enctype="multipart/form-data">
+    <label for="course_name">اسم الكورس:</label>
+    <input type="text" id="course_name" name="name" required>
+
+    <!-- Add fields for editing -->
+    <label for="academic_year">السنة الدراسية:</label>
+    <select id="academic_year" name="grade" required>
+        <!-- Options -->
+
+
+      <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
+      <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+      <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
+    </select>
+
+    <label for="specialization">التخصص:</label>
+    <select id="specialization" name="section" required>
+        <!-- Options -->
+        <option value="علمي">علمي</option>
+      <option value="أدبي">أدبي</option>
+    </select>
+
+    <label for="course_description">وصف الكورس:</label>
+    <textarea id="course_description" name="description" rows="4" required></textarea>
+
+    <label for="course_type">اختار نوع الكورس:</label>
+    <select id="course_type" name="type" required>
+        <option value="offline">أوفلاين</option>
+        <option value="online">أونلاين</option>
+    </select>
+
+    <div id="online_schedule" style="display: none;">
+        <label for="course_time">الميعاد والساعة:</label>
+        <input type="datetime-local" id="course_time" name="course_time" style="padding: 10px; border: 1px solid #235391; border-radius: 5px;">
+    </div>
+     <label for="course_photo">صورة الكورس:</label>
+    <br>
+    <input type="file" id="course_photo" name="image">
+    <br>
+    <!-- Add field for course photo -->
+
+
+    <input type="submit" value="إنشاء الكورس">
+</form>
+
+</div>
+
+<footer>
+  <p>جميع الحقوق محفوظة &copy; 2024</p>
+</footer>
+
+<script>
+  document.getElementById('course_type').addEventListener('change', function() {
+    var onlineSchedule = document.getElementById('online_schedule');
+    if (this.value === 'online') {
+      onlineSchedule.style.display = 'block';
+    } else {
+      onlineSchedule.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>

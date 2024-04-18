@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Maker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #235391;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
+
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #235391;
+        margin-bottom: 20px;
+    }
+
+    #questionType {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #235391;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #235391;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    button:hover {
+        background-color: #1a3d73;
+    }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+.question {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .question label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .question input[type="text"],
+    .question select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .question hr {
+        margin-top: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-top: 1px solid #ccc;
+    }
+
+    .question button {
+        padding: 8px 16px;
+        background-color: #235391;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .question button:hover {
+        background-color: #1a3d73;
+    }
+        footer {
+            background-color: #235391;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>انشاء تطبيق</h1>
+        </nav>
+    </header>
+
+       <main>
+        <div class="container">
+            <h2>انشئ تطبيقك </h2>
+            <form id="quizForm">
+                <div id="questionContainer"></div>
+                <label for="questionType">اختر نوع السؤال:</label>
+                <select id="questionType">
+                    <option value="trueFalse">صح ام خطأ</option>
+                    <option value="mcq">الاختيار بين المتعدد</option>
+                </select>
+                <button type="button" onclick="addQuestion()">اضافة سؤال</button>
+                <button type="submit">انهاء التطبيق</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <p>&copy; 2024 </p>
+        </div>
+    </footer>
+
+    <script>
+        function addQuestion() {
+            const questionType = document.getElementById("questionType").value;
+            const questionContainer = document.getElementById("questionContainer");
+
+            let questionDiv = document.createElement("div");
+            questionDiv.classList.add("question");
+
+            if (questionType === "trueFalse") {
+                questionDiv.innerHTML = `
+
+                    <label for="question">السؤال:</label>
+                    <input type="text" id="question" placeholder="ضع سؤالك">
+                    <br>
+                    <label for="answer">الاجابة:</label>
+                    <select id="answer">
+                        <option value="true">صح</option>
+                        <option value="false">خطأ</option>
+                    </select>
+                    <hr>
+                `;
+            } else if (questionType === "mcq") {
+                questionDiv.innerHTML = `
+
+                    <label for="question">السؤال:</label>
+                    <input type="text" id="question" placeholder="ضع سؤالك">
+                    <br>
+                    <label for="options">الاجابات:</label>
+                    <input type="text" id="option1" placeholder="الاجابة الاولي ">
+                    <input type="text" id="option2" placeholder="الاجابة الثانية">
+                    <input type="text" id="option3" placeholder="الاجابة الثالثة">
+                    <input type="text" id="option4" placeholder="الاجابة الرابعة">
+                    <br>
+                    <label for="answer">الاجابة الصحيحة:</label>
+                    <select id="answer">
+                        <option value="1">الاجابة الاولي</option>
+                        <option value="2">الاجابة الثانية</option>
+                        <option value="3">الاجابة الثالثة</option>
+                        <option value="4">الاجابة الرابعة</option>
+                    </select>
+                    <hr>
+                `;
+            }
+
+            questionContainer.appendChild(questionDiv);
+        }
+
+        function generateQuiz() {
+            const questions = document.querySelectorAll(".question");
+            let quiz = [];
+
+            questions.forEach(question => {
+                const questionType = question.querySelector("#questionType").value;
+                const questionText = question.querySelector("#question").value;
+                const answer = question.querySelector("#answer").value;
+
+                if (questionType === "trueFalse") {
+                    quiz.push({
+                        type: "trueFalse",
+                        question: questionText,
+                        answer: answer
+                    });
+                } else if (questionType === "mcq") {
+                    const option1 = question.querySelector("#option1").value;
+                    const option2 = question.querySelector("#option2").value;
+                    const option3 = question.querySelector("#option3").value;
+                    const option4 = question.querySelector("#option4").value;
+
+                    quiz.push({
+                        type: "mcq",
+                        question: questionText,
+                        options: [option1, option2, option3, option4],
+                        answer: answer
+                    });
+                }
+            });
+
+            alert(quiz); // You can do something else with the generated quiz data
+        }
+    </script>
+</body>
+</html>

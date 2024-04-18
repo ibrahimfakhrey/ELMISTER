@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>register now</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="../static/register.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h1 style="color:#235391;">يرجى اختيار تسجيل الدخول برقم الهاتف او الايميل</h1>
+<br>
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+
+<form action="{{url_for('register')}}" method="post">
+    <h1>تسجيل الدخول برقم الهاتف</h1>
+    <span>يرجي ادخال رقم الهاتف بدون مفتاح الدولة</span>
+
+    <div style="position: relative;">
+        <span style="position: absolute; top: 8px; left: -15px; color: red;">*</span>
+        <input type="text" placeholder="الاسم" name="name" required />
+    </div>
+  <div style="position: relative;">
+        <span style="position: absolute; top: 8px; left: -15px; color: red;">*</span>
+        <input type="text" placeholder="الايميل" name="email" required />
+    </div>
+    <div style="position: relative;">
+        <span style="position: absolute; top: 8px; left: -15px; color: red;">*</span>
+        <input type="text" placeholder="الهاتف" name="phone" required />
+    </div>
+
+    <div style="position: relative;">
+        <span style="position: absolute; top: 8px; left: -15px; color: red;">*</span>
+        <input type="password" placeholder="كلمة المرور" name="password" required />
+    </div>
+
+    <div style="position: relative;">
+        <span style="position: absolute; top: 8px; left: -15px; color: red;">*</span>
+        <input type="password" placeholder=" كلمة المرور مرة اخري " name="password" required />
+    </div>
+
+    <button type="submit">تسجيل</button>
+</form>
+
+	</div>
+	<div class="form-container sign-in-container">
+			<form action="{{url_for('register')}}" method="post">
+    <h1>تسجيل الدخول برقم الهاتف</h1>
+    <span>يرجي ادخال رقم الهاتف بدون مفتاح الدولة</span>
+
+    <div style="position: relative;">
+        <span style="position: absolute; top: 8px; left: -15px; color: red;">*</span>
+        <input type="text" placeholder="الاسم" name="name" required />
+    </div>
+
+    <div style="position: relative;">
+        <span style="position: absolute; top: 8px; left: -15px; color: red;">*</span>
+        <input type="text" placeholder="الهاتف" name="phone" required />
+    </div>
+
+    <div style="position: relative;">
+        <span style="position: absolute; top: 8px; left: -15px; color: red;">*</span>
+        <input type="password" placeholder="كلمة المرور" name="password" required />
+    </div>
+
+    <div style="position: relative;">
+        <span style="position: absolute; top: 8px; left: -15px; color: red;">*</span>
+        <input type="password" placeholder=" كلمة المرور مرة اخري " name="password" required />
+    </div>
+
+    <button type="submit">تسجيل</button>
+</form>
+
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>مرحبا يا صديقي </h1>
+				<p>للتسجيل باستخدام الهاتف </p>
+				<button class="ghost" id="signIn">اضغط هنا </button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>مرحبا يا صديقي </h1>
+				<p>للتسجيل باستخدام  الايميل </p>
+				<button class="ghost" id="signUp">اضغط هنا </button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p>
+
+	</p>
+</footer>
+<!-- partial -->
+  <script  src="../static/register.js"></script>
+
+</body>
+</html>
